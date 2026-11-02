@@ -38,6 +38,7 @@ jobs:
         run: |
           git config user.name  "job-alert-bot"
           git config user.email "job-alert-bot@users.noreply.github.com"
+          [ -f data/companies.json ] || exit 0
           git add data/companies.json
           git diff --cached --quiet && exit 0
           git commit -m "Update company list [skip ci]"

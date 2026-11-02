@@ -40,6 +40,7 @@ jobs:
         run: |
           git config user.name  "job-alert-bot"
           git config user.email "job-alert-bot@users.noreply.github.com"
+          [ -f data/state.json ] || exit 0
           git add data/state.json
           git diff --cached --quiet && exit 0
           git commit -m "Update job state [skip ci]"
