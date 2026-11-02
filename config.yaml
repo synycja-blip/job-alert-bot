@@ -1,0 +1,136 @@
+# ─────────────────────────────────────────────────────────────
+#  Job Alert Bot — settings
+#  Edit this file on GitHub (pencil icon) to change what you get.
+#  Matching is case-insensitive and by whole words
+#  ("designer" also matches "designers"; "intern" does NOT match "internal").
+# ─────────────────────────────────────────────────────────────
+
+# A job TITLE must contain at least one of these…
+title_include:
+  - "graphic design"
+  - "visual design"
+  - "brand design"
+  - "marketing design"
+  - "presentation design"
+  - "communications design"
+  - "communication design"
+  - "creative design"
+  - "digital design"
+  - "multimedia design"
+  - "publication design"
+  - "print design"
+  - "production design"
+  - "production artist"
+  - "data visualization"
+  - "data visualisation"
+  - "information design"
+  - "infographic"
+  - "illustrator"
+  - "pitch deck"
+  - "powerpoint"
+  - "deck design"
+  - "layout design"
+  - "visual communication"
+  - "creative services"
+  - "design specialist"
+  - "design associate"
+  - "designer"          # broad catch-all; exclusions below remove the wrong kinds
+
+# …and must NOT contain any of these.
+title_exclude:
+  - "product designer"
+  - "product design"
+  - "ux"
+  - "ui"
+  - "user experience"
+  - "user interface"
+  - "interaction design"
+  - "service design"
+  - "content design"
+  - "conversation design"
+  - "experience designer"
+  - "learning design"
+  - "instructional"
+  - "industrial design"
+  - "interior design"
+  - "fashion"
+  - "apparel"
+  - "footwear"
+  - "jewelry"
+  - "textile"
+  - "game designer"
+  - "level designer"
+  - "narrative designer"
+  - "sound design"
+  - "lighting design"
+  - "landscape"
+  - "architect"
+  - "architectural"
+  - "civil"
+  - "structural"
+  - "mechanical"
+  - "electrical"
+  - "hardware"
+  - "circuit"
+  - "asic"
+  - "fpga"
+  - "silicon"
+  - "rf"
+  - "pcb"
+  - "verification"
+  - "design engineer"
+  - "systems designer"
+  - "solution designer"
+  - "solutions designer"
+  - "network design"
+  - "database"
+  - "kitchen"
+  - "floral"
+  - "hair"
+  - "nail"
+  - "cake"
+  - "intern"
+  - "internship"
+  - "director"
+  - "vp"
+  - "vice president"
+  - "head of"
+  - "chief"
+
+# Turn on if you also want Product / UX / UI designer roles.
+include_product_ux: false
+
+# Location rules
+remote_only: true              # only remote roles
+us_only: true                  # only roles open to people in the US
+allow_unclear_remote: true     # "Remote" with no country → still send (marked "location unclear")
+
+# How often less-likely companies are checked.
+#  "Hot" companies (seeded, or have posted design roles before) are checked every run.
+#  All others are split into this many groups; one group is checked per run.
+#  4 groups × 30-min runs ≈ every company checked at least every 2 hours.
+cold_rotation_groups: 4
+
+# Remote job boards to watch as well (true/false)
+boards:
+  remotive: true
+  remoteok: true
+  weworkremotely: true
+  himalayas: true
+
+# Optional: Workday career sites (many hospitals & big corporations use Workday).
+# Paste the careers URL exactly as it looks in your browser, one per line, e.g.
+#   - "https://acme.wd5.myworkdayjobs.com/en-US/External"
+workday_sites: []
+
+# First run: send the design roles that are open right now (true),
+# or stay quiet and only alert on brand-new ones from then on (false).
+first_run_send_current: true
+first_run_max_jobs: 40
+
+# When a newly discovered company is added, alert only on its jobs posted in the
+# last N hours (prevents a flood of old postings).
+new_company_lookback_hours: 48
+
+# Telegram message limit per run (avoids spam if something goes odd).
+max_alerts_per_run: 60

@@ -1,0 +1,16 @@
+{
+ "_note": "Companies always checked every run. Add your own: the part after the domain in their jobs URL (boards.greenhouse.io/<this>, jobs.lever.co/<this>, jobs.ashbyhq.com/<this>). Wrong names are skipped automatically.",
+ "greenhouse": ["airbnb", "stripe", "figma", "dropbox", "pinterest", "reddit", "discord", "gitlab",
+   "coinbase", "robinhood", "lyft", "instacart", "squarespace", "duolingo", "webflow", "asana",
+   "airtable", "gusto", "brex", "chime", "datadog", "mongodb", "cloudflare", "twilio", "anthropic",
+   "oscar", "hims", "calm", "headway", "grammarly", "medium", "vimeo", "etsy", "peloton",
+   "nerdwallet", "betterment", "affirm", "thumbtack", "carta", "doordash", "faire", "glossier",
+   "warbyparker", "allbirds", "everlane", "mailchimp", "samsara", "flexport", "verkada"],
+ "lever": ["palantir", "spotify", "plaid", "ro", "eventbrite", "kraken", "whoop", "zoox",
+   "matchgroup", "outreach", "netlify", "hive", "attentive"],
+ "ashby": ["ramp", "notion", "linear", "openai", "vercel", "posthog", "replit", "deel", "zapier",
+   "1password", "cursor", "elevenlabs", "runway", "perplexity", "mercury", "retool", "supabase",
+   "pitch", "gamma", "beehiiv", "descript"],
+ "workable": [],
+ "smartrecruiters": ["Visa", "Canva"]
+}
