@@ -1,0 +1,44 @@
+name: Discover companies
+
+on:
+  schedule:
+    - cron: "23 10 * * 0"    # every Sunday
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: job-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Find companies using Greenhouse, Lever, Ashby, Workable, SmartRecruiters
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DISCOVERY_MINUTES: "240"
+        run: python -m bot.discover
+
+      - name: Save company list
+        if: always()
+        run: |
+          git config user.name  "job-alert-bot"
+          git config user.email "job-alert-bot@users.noreply.github.com"
+          git add data/companies.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update company list [skip ci]"
+          for i in 1 2 3; do git pull --rebase -X theirs && git push && break; sleep 5; done
