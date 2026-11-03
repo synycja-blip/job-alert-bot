@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 data/*.tmp
 .pytest_cache/
+data/audit.json

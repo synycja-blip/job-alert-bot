@@ -34,7 +34,24 @@ title_include:
   - "creative services"
   - "design specialist"
   - "design associate"
+  - "web design"
+  - "motion design"
+  - "brand creative"
+  - "social media design"
+  - "creative lead"
+  - "design strategist"
   - "designer"          # broad catch-all; exclusions below remove the wrong kinds
+
+# Titles with these are ALWAYS kept, even if a word below would block them
+# (e.g. "director" is blocked, but "Art Director" is wanted).
+title_always_include:
+  - "art director"
+  - "associate creative director"
+  - "graphic designer"
+  - "visual designer"
+  - "brand designer"
+  - "presentation designer"
+  - "marketing designer"
 
 # …and must NOT contain any of these.
 title_exclude:
@@ -104,6 +121,7 @@ include_product_ux: false
 remote_only: true              # only remote roles
 us_only: true                  # only roles open to people in the US
 allow_unclear_remote: true     # "Remote" with no country → still send (marked "location unclear")
+allow_us_wide: true            # location is just "United States" / "US" (no city) → often remote; send, marked "check"
 
 # How often less-likely companies are checked.
 #  "Hot" companies (seeded, or have posted design roles before) are checked every run.
@@ -126,7 +144,7 @@ workday_sites: []
 # First run: send the design roles that are open right now (true),
 # or stay quiet and only alert on brand-new ones from then on (false).
 first_run_send_current: true
-first_run_max_jobs: 40
+first_run_max_jobs: 400
 
 # When a newly discovered company is added, alert only on its jobs posted in the
 # last N hours (prevents a flood of old postings).

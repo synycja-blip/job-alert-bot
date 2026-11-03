@@ -38,6 +38,8 @@ def title_matches(title: str, cfg: dict) -> bool:
     if cfg.get("include_product_ux"):
         exclude = [t for t in exclude if t.strip().lower() not in PRODUCT_UX_TERMS]
         include = list(include) + ["product designer", "ux designer", "ui designer"]
+    if _has_any(title, cfg.get("title_always_include", [])) and not _has_any(title, ["intern", "internship"]):
+        return True
     return _has_any(title, include) and not _has_any(title, exclude)
 
 
@@ -93,6 +95,8 @@ NON_US = [
     "israel", "tel aviv", "dubai", "uae", "saudi", "qatar", "egypt", "nigeria", "lagos",
     "kenya", "nairobi", "south africa", "cape town",
 ]
+US_WIDE_ONLY = {"united states", "us", "usa", "u.s.", "united states of america", "us-national",
+                "united states | us", "united states | united states"}
 REMOTE_WORDS = ["remote", "anywhere", "work from home", "wfh", "distributed", "telecommute",
                 "virtual", "home based", "home-based", "fully remote"]
 
@@ -110,6 +114,10 @@ def location_check(job: dict, cfg: dict) -> tuple[bool, bool]:
     loc = " | ".join(x for x in [job.get("location") or "", job.get("country") or ""] if x)
     low = loc.lower()
     remote_flag = job.get("remote")
+
+    us_wide = low.strip(" |") in US_WIDE_ONLY or low.replace(" ", "") in ("united states|us", "us|us", "us|united states")
+    if cfg.get("remote_only", True) and us_wide and remote_flag is None and cfg.get("allow_us_wide", True):
+        return True, True  # "United States" with no city: usually a remote role
 
     if cfg.get("remote_only", True):
         textual_remote = _has_any(low, REMOTE_WORDS)

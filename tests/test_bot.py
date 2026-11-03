@@ -210,7 +210,7 @@ def test_full_flow(sandbox):
     assert titles.count("Senior Graphic Designer@Acme") == 1        # Greenhouse + Remotive deduped
     assert not any("Euro" in t for t in titles)                     # Europe-only dropped
     assert not any("Software" in t for t in titles)
-    assert len(tg.sent) >= 1 and "Job alert bot is live" in tg.sent[0]
+    assert len(tg.sent) >= 1 and "Every remote design role open right now" in tg.sent[0]
 
     # 2nd run, nothing changed → silence
     tg = FakeTG()

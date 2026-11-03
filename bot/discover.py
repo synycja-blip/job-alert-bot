@@ -34,8 +34,8 @@ PATTERNS = {
 SKIP = {"", "embed", "jobs", "v1", "api", "j", "favicon.ico", "robots.txt", "static", "assets",
         "oneclick-ui", "sr-jobs", "careers", "search", "sitemap.xml", "_next", "cdn-cgi", "en", "login"}
 SLUG_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$")
-MAX_PAGES = int(os.environ.get("CC_MAX_PAGES", "150"))       # per pattern per crawl
-CRAWLS = int(os.environ.get("CC_CRAWLS", "2"))               # how many recent crawls to read
+MAX_PAGES = int(os.environ.get("CC_MAX_PAGES", "800"))       # per pattern per crawl
+CRAWLS = int(os.environ.get("CC_CRAWLS", "4"))               # how many recent crawls to read
 TIME_BUDGET = float(os.environ.get("DISCOVERY_MINUTES", "240")) * 60
 
 

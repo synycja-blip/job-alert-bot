@@ -26,7 +26,7 @@ def ago(dt) -> str:
 def format_job(job: dict) -> str:
     loc = escape(job.get("location") or "Location not listed")
     if job.get("unclear"):
-        loc += " <i>(country not stated — check)</i>"
+        loc += " <i>(check: remote &amp; US-eligible?)</i>"
     return (
         f"🎨 <b>{escape(job['title'])}</b>\n"
         f"🏢 {escape(job.get('company') or 'Unknown company')}\n"

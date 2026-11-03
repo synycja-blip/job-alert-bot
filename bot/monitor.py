@@ -175,8 +175,8 @@ async def notify(tg: Telegram, alerts, current, state, cfg, n_companies) -> list
     failed = []
     if not state["initialized"]:
         current = _sort_newest(current)
-        intro = (f"👋 <b>Job alert bot is live!</b>\nWatching {n_companies:,} company career pages "
-                 f"+ remote job boards, every ~30 min.\n")
+        intro = (f"📋 <b>Every remote design role open right now</b>\nWatching {n_companies:,} company "
+                 f"career pages + remote job boards. After this list you'll only get NEW roles.\n")
         if cfg.get("first_run_send_current", True) and current:
             cap = int(cfg.get("first_run_max_jobs", 40))
             intro += f"\nHere are {min(cap, len(current))} remote design roles open right now"
